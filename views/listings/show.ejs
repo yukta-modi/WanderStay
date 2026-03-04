@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderStay</title>
+</head>
+<body>
+    <h3>Stay Details</h3>
+    <ul>
+        <li><%= specificListing.title %></li>
+        <li><%= specificListing.description %></li>
+        <li>&#8377; <%= specificListing.price.toLocaleString("en-IN") %></li>
+        <li><%= specificListing.location %></li>
+        <li><%= specificListing.country %></li>
+    </ul>
+    <br/>
+    <a href="/listings/<%= specificListing._id %>/edit">Edit details</a>
+    <br/><br/>
+    <form method="post" action="/listings/<%= specificListing._id %>?_method=DELETE">
+        <button>Delete</button>
+    </form>
+</body>
+</html>
