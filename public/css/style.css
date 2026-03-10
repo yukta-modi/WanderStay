@@ -1,5 +1,4 @@
 /* Navbar */
-
 .navbar{
     height: 5rem;
     background-color: white;
@@ -12,4 +11,10 @@
 
 .nav-link{
     color: #222222 !important;
+}
+
+/* Add new Staycation */
+.add-btn{
+    background-color: #fe424d !important;
+    border: none !important;
 }
