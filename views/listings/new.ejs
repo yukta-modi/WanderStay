@@ -1,48 +1,37 @@
 <% layout('/layouts/boilerplate') -%>
-<body>
-    <div class="row">
-        <div class="col-8 offset-2">
 
-            <br/> <br/>
-            <h3>New Staycation details</h3>
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+        <h3 class="mb-4">New Property </h3>
 
-            <form method="post" action="/listings">
-                <div class="mb-3">                             
-                    <label for="title" class="form-label">Title</label>
-                    <input name="listing[title]" placeholder="Enter catchy staycation name" type="text" class="form-control">
+        <form method="post" action="/listings">
+            <div class="mb-3">                             
+                <label for="title" class="form-label">Title</label>
+                <input name="listing[title]" placeholder="Enter catchy staycation name" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="listing[description]" placeholder="Enter description" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input name="listing[image]" placeholder="Enter image URL/link" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input name="listing[price]" placeholder="1200" type="number" class="form-control">
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-7">
+                    <label for="location" class="form-label">Location</label>
+                    <input name="listing[location]" placeholder="Shimla, Himachal Pradesh" type="text" class="form-control">
                 </div>
-
-                <div class="mb-3">
-                    <label for="dexcription" class="form-label">Description</label>
-                    <textarea name="listing[description]" placeholder="Enter description" class="form-control"></textarea>
+                <div class="mb-3 col-md-5">
+                    <label for="country" class="form-label">Country</label>
+                    <input name="listing[country]" placeholder="India" type="text" class="form-control">
                 </div>
-
-                <div class="mb-3">
-                    <label for="image" class="form-label">Image</label>
-                    <input name="listing[image]" placeholder="Enter image URL/link" type="text" class="form-control">
-                </div>
-
-                <div class="mb-3">
-                    <label for="price" class="form-label">Price</label>
-                    <input name="listing[price]" placeholder="1200" type="number" class="form-control">
-                </div>
-
-                <div class="row">
-                    <div class="mb-3 col-md-7">
-                        <label for="location" class="form-label">Location</label>
-                        <input name="listing[location]" placeholder="Shimla, Himachal Pradesh" type="text" class="form-control">
-                    </div>
-                    <div class="mb-3 col-md-5">
-                        <label for="country" class="form-label">Country</label>
-                        <input name="listing[country]" placeholder="India" type="text" class="form-control">
-                    </div>
-                </div>
-                <br/>
-
-                <button class="btn btn-dark add-btn">Add</button>
-                <br/><br/>
-            </form>
-
-        </div>
+            </div>                
+            <button class="btn btn-dark add-btn">Add</button>
+        </form>
     </div>
-</body>
+</div>
