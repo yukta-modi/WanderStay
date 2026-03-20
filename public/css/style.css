@@ -4,6 +4,12 @@ body{
     min-height: 100vh;
 }
 
+.all-btns{
+    background-color: #fe424d !important;
+    border: none !important;
+    margin-bottom: 1rem;
+}
+
 .container{
     flex: 1;
 }
@@ -91,17 +97,21 @@ body{
 
 /* Add new Property Page */
 .add-btn{
-    background-color: #fe424d !important;
-    border: none !important;
     margin-top: 0.5rem;
-    margin-bottom: 1rem;
 }
 
 
 /* Edit Property Page */
 .ok-btn{
-    background-color: #fe424d !important;
-    border: none !important;
     margin-top: 0.5rem;
-    margin-bottom: 1rem;
+}
+
+
+/* Show Property Page */
+.show-img{
+    height: 30vh;
+}
+
+.btns{
+    display: flex;
 }
