@@ -10,10 +10,9 @@ WanderStay is a full-stack web application inspired by AirBnb where users can ex
 - Server-side rendering using EJS
   
 ## Tech Stack
-HTML
+JavaScript
 CSS
 EJS
 Node.js
 Express.js
 MongoDB
-Mongoose
