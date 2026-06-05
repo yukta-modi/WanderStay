@@ -76,7 +76,7 @@ app.post("/listings", validateListing, wrapAsync(async(req, res, next) =>{
 // Show Route (To display specific stay)
 app.get("/listings/:id", wrapAsync(async(req, res) =>{
     let {id} = req.params;
-    const specificListing = await Listing.findById(id);
+    const specificListing = await Listing.findById(id).populate("reviews");
     res.render("listings/show.ejs", {specificListing});
 }));
 
@@ -111,15 +111,21 @@ app.post("/listings/:id/reviews", validateReview, wrapAsync(async(req, res) => {
 
     await newReview.save();
     await reviewListing.save();
-
-    console.log(reviewListing);
     res.redirect(`/listings/${reviewListing._id}`);
 }));
+
+// Delete Review Route (To delete specific review)
+app.delete("/listings/:id/reviews/:reviewId", wrapAsync(async(req, res) =>{
+    let {id, reviewId} = req.params;
+    await Listing.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/listings/${id}`);
+}));
+
 
 
 app.use((req, res, next) =>{
     next(new ExpressError(404, "Page not found!"));
-    
 });
 
 // Error Handling Middleware

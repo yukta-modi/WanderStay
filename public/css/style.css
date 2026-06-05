@@ -16,6 +16,10 @@ body{
 
 
 /* Navbar */
+footer{
+    margin-top: 5%;
+}
+
 .navbar{
     height: 5rem;
     background-color: white;
@@ -117,7 +121,6 @@ body{
 }
 
 /* Review Section */
-
 .rating {
     direction: rtl; /* makes stars work right-to-left */
     unicode-bidi: bidi-override;
@@ -143,4 +146,39 @@ body{
 .rating label:hover,
 .rating label:hover ~ label {
     color: orange;
+}
+
+/* Displaying reviews */
+.comment-box {
+    margin-top: 1rem;
+    margin-bottom: -5px;
+}
+
+.star-rating {
+    margin-bottom: 1rem;
+}
+
+.star {
+    font-size: 20px;
+    color: orange;
+}
+
+.review-date{
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+.review-date > p{
+    color: gray;
+}
+
+.review-display{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-right: 5%;
+    border-radius: 7px;
+    background-color: seashell;
 }
