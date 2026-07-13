@@ -3,16 +3,19 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "patch-package"
   },
   "keywords": [],
   "author": "Yukta Modi",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "connect-flash-plus": "^0.2.1",
     "ejs": "^4.0.1",
     "ejs-mate": "^4.0.0",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "joi": "^18.1.2",
     "method-override": "^3.0.0",
     "mongoose": "^9.2.2"
