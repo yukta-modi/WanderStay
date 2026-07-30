@@ -39,29 +39,32 @@
             <hr/>
             <h4>Write a Review</h4>
             <form method="post" action="/listings/<%= specificListing.id %>/reviews" novalidate class="needs-validation">
-                <div class="mb-2 mt-2">
+                <div class="mt-3">
                     <label class="form-label">Rating</label>
-                        <div class="rating">
-                            <input type="radio" name="review[rating]" value="5" id="star5" required>
-                            <label for="star5">★</label>
+                    <fieldset class="starability-slot">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value=""  aria-label="No rating." />
 
-                            <input type="radio" name="review[rating]" value="4" id="star4">
-                            <label for="star4">★</label>
+                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
 
-                            <input type="radio" name="review[rating]" value="3" id="star3">
-                            <label for="star3">★</label>
+                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        
+                        <input type="radio" id="first-rate3" name="review[rating]" value="3" checked/>
+                        <label for="first-rate3" title="Average">3 stars</label>
 
-                            <input type="radio" name="review[rating]" value="2" id="star2">
-                            <label for="star2">★</label>
+                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
 
-                            <input type="radio" name="review[rating]" value="1" id="star1">
-                            <label for="star1">★</label>
-                        </div>
+                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        
+                    </fieldset>
                     <div id="ratingError" class="invalid-feedback" style="display: none;">
                         Please add rating for review
                     </div>
                 </div>
-                <div class="mb-3 mt-3">
+                <div class="mb-3">
                     <label for="comment" class="form-label">Comment</label>
                     <textarea name="review[comment]" id="comment" cols="20" rows="5" class="form-control" required></textarea>
                     <div class="invalid-feedback">
@@ -79,15 +82,10 @@
         <div class="row">
             <% for( review of specificListing.reviews ) { %>
                 <div class="review-display col-md-4 col-lg-3 mb-4 col-sm-6">
-                    <h5><%= review.author.username %></h5>
+                    <h5 class="review-author"><%= review.author.username %></h5>
                     <p class="comment-box"><%= review.comment %></p>
-                    <div class="star-rating">
-                        <% for( let i = 1; i <= 5; i++)  { %>
-                            <% if (i <= review.rating) { %>
-                                <span class="star filled">★</span>
-                            <% } %>
-                        <% } %>
-                    </div>
+                    <p class="starability-result" data-rating="<%= review.rating %>">
+                    </p>
                     <div class="review-date">
                         <p >
                         <%= review.createdAt.toLocaleDateString('en-GB', { 
@@ -95,7 +93,7 @@
                         year: 'numeric' 
                         }) %>
                         </p>
-                        <% if(currUser._id.equals(review.author._id)){ %>
+                        <% if(currUser && currUser._id.equals(review.author._id)){ %>
                             <form method="post" action="/listings/<%= specificListing.id %>/reviews/<%= review._id %>?_method=DELETE">
                                 <button class="btn btn-sm btn-outline-dark">Delete</button>
                             </form>

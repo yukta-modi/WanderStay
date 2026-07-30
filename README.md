@@ -9,6 +9,7 @@ WanderStay is a full-stack web application inspired by AirBnb where users can ex
 - Add or delete review for the property listed
 - Responsive UI
 - Server-side rendering using EJS
+- Implemented using MVC Framework
   
 ## Tech Stack
 JavaScript
@@ -17,3 +18,4 @@ EJS
 Node.js
 Express.js
 MongoDB
+MVC Framework
