@@ -30,7 +30,6 @@ module.exports.signupUser = async (req, res) => {
 module.exports.loginForm = (req, res) => {
     res.render("users/login.ejs");
 };
-// 
 module.exports.loginUser = async(req, res) => {
     req.flash("success", "Welcome back to WanderStay!");
     let redirectUrl = (res.locals.redirectUrl) || "/listings";

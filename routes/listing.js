@@ -4,15 +4,17 @@ const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
 const Listing = require("../models/listing.js");
 const {isLoggedIn, authorizeOwner, validateListing} = require("../middleware.js");
-const listing = require("../models/listing.js");
 const listingController = require("../controllers/listing.js");
+const multer = require("multer");
+const {storage} = require("../cloudConfig.js");
+const upload = multer({storage});
 
 
 router.route("/")
 // Index Route (To display entire staycation list)
     .get(wrapAsync(listingController.indexAllListing))
 // Add Route (To add new stay in DB)
-    .post(isLoggedIn, validateListing, 
+    .post(isLoggedIn, upload.single('listing[image]'), validateListing,
         wrapAsync(listingController.createNewListing)
     );
 
@@ -25,7 +27,7 @@ router.route("/:id")
 // Show Route (To display specific stay)
     .get(wrapAsync(listingController.showListing))
 // Edit Route (Update edited details in DB)
-    .put(isLoggedIn, authorizeOwner, validateListing, 
+    .put(isLoggedIn, authorizeOwner, upload.single('listing[image]'), validateListing, 
         wrapAsync(listingController.editListing)
     )
 // Delete Route (To delete specific stay)

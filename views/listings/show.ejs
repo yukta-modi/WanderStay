@@ -5,7 +5,7 @@
         <h3><%= specificListing.title %></h3>
     </div>
     <div class="card col-6 offset-3 mt-1">
-        <img src="<%= specificListing.image %>" class="card-img-top show-img" alt="property_image">
+        <img src="<%= specificListing.image.url %>" class="card-img-top show-img" alt="property_image">
         <div class="card-body">
             <p class="card-text mt-1"> 
                 <i>Owned by <%= specificListing.owner.username %></i>

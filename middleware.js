@@ -39,7 +39,9 @@ module.exports.isLoggedIn = (req, res, next) => {
 // To save url info from session to local 
 // As everytime user login session gets reset
 module.exports.saveRedirectUrl = (req, res, next) => {
-    res.locals.redirectUrl = req.session.redirectUrl;
+    if (req.session.redirectUrl) {
+        res.locals.redirectUrl = req.session.redirectUrl;
+    }
     next();
 };
 

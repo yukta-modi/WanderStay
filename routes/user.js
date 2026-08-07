@@ -20,7 +20,16 @@ router.route("/login")
 // (Form to login user)
     .get(userController.loginForm)
 // (To authenticate & then login user)
-    .post(saveRedirectUrl, 
+     .post(
+        // (req, res, next) => {
+        //     console.log("======== Before Passport ========");
+        //     console.log("Session:", req.session);
+        //     console.log("redirect:", req.session.redirectUrl);
+        //     req.savedRedirectUrl = req.session.redirectUrl;
+        //     console.log("Saved in req:", req.savedRedirectUrl);
+        //     next();
+        // },
+        saveRedirectUrl, 
         passport.authenticate("local", 
             {failureRedirect: "/login", failureFlash: true}
         ), 

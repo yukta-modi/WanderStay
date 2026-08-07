@@ -13,8 +13,13 @@ module.exports.addForm = (req, res) =>{
 };
 // Create New Listing callback
 module.exports.createNewListing = async(req, res, next) =>{
+    let url = req.file.path;
+    let filename = req.file.filename;
+
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
+    newListing.image = {url, filename};
+
     await newListing.save();
     req.flash("success", "New Staycation added to listing..");
     res.redirect("/listings");
@@ -48,13 +53,20 @@ module.exports.editForm = async(req, res) =>{
 //
 module.exports.editListing = async(req, res) => {
     let {id} = req.params;
-    await Listing.findByIdAndUpdate(id, {...req.body.listing}, {runValidators: true});
+    let updatedListing = await Listing.findByIdAndUpdate(id, {...req.body.listing}, {runValidators: true});
+
+    if (typeof req.file !== "undefined") {
+        let url = req.file.path;
+        let filename = req.file.filename;
+        updatedListing.image = {url, filename};
+        updatedListing.save();
+    }
     req.flash("success", "Staycation details updated..");
     res.redirect(`/listings/${id}`);
 };
 
 
-//
+// Delte Route Callback
 module.exports.deleteListing = async(req, res) =>{
     let {id} = req.params;
     await Listing.findByIdAndDelete(id);
